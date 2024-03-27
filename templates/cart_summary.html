@@ -1,0 +1,62 @@
+{% extends 'base.html'%}
+
+{% block content%}
+<div class="Cart" style="margin: 0 auto; max-width: 1000px;">
+    <div class="Cart-header" style="color: hsl(353, 100%, 78%); text-align: center; font-size: 300%;">
+        <h1 style="margin: 0; padding: 0;">Shopping Cart</h1>
+        <p>View Your Cart</p>
+        <br/><br/><br/><br/><br/><br/><br/>
+    </div>
+ 
+</div>
+
+<div class='product'>
+    {%if cart_products%}
+    {%for products in cart_products%}
+    
+
+
+    <div class="product" style="margin: 0 auto; max-width: 1200px;">
+        <div style="max-width: 1400px; margin-bottom: 1rem; border: 1px solid rgba(0,0,0,.125); border-radius: .25rem; overflow: hidden;">
+          <div style="display: flex; flex-wrap: nowrap;">
+            <div style="flex: 0 0 auto; width: 33.333333%;">
+              <img src="{{product.image.url}}" style="width: 100%; height: auto; border-top-left-radius: calc(.25rem - 1px); border-bottom-left-radius: calc(.25rem - 1px);" alt="product Image">
+            </div>
+            <div style="flex: 1 1 auto; padding: .375rem .75rem;">
+              <div style="padding: 1rem;">
+                  <center style="text-align: justify;"> 
+                      <h5 style="margin-top: 0; margin-bottom: .75rem;"><b>{{product.name}}</b></h5><br/>
+                      <p style="margin-top: 0; margin-bottom: 1rem;">{{product.description}}</p><br/>
+                      {%if product.is_sale%}
+      
+                      
+                        <div class="price-box">
+                          <p class="price">UGX {{product.sale_price}}</p>
+                          
+                        </div>
+                      {%else%}
+                      
+                      UGX{{ product.price}}
+                      <br/>
+                      {%endif%}
+                      <br/><br/><br/>
+      
+      
+      
+                     
+                  </center>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    {%endfor%}
+    {%else%}
+    There is nothing in your cart..
+    <br/><br/><br/><br/><br/><br/><br/>
+    {%endif%}
+</div>
+{% endblock%}
